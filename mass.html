@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>مُصْعَب - Personal Page</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body, html {
+      margin: 0; padding: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+      direction: ltr;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #6a11cb, #2575fc, #6a11cb, #2575fc);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px 20px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 480px;
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img.profile {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .icon-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      color: white;
+      font-size: 38px;
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
+
+    .icon-link:hover {
+      transform: scale(1.2);
+      background: rgba(255,255,255,0.4);
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+
+    #startOverlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 10, 10, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #90caf9;
+      font-size: 26px;
+      cursor: pointer;
+      z-index: 9999;
+      text-align: center;
+      padding: 20px;
+      user-select: none;
+      font-weight: 600;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .credit {
+      font-size: 12px;
+      color: #ccc;
+      margin-top: 25px;
+      opacity: 0.7;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Start screen overlay -->
+  <div id="startOverlay">Click here to start music automatically</div>
+
+  <div class="container" id="mainContent">
+    <img src="profile.png" alt="مُصْعَب" class="profile" />
+    <h1>مُصْعَب</h1>
+
+    <div class="links">
+      <a href="https://www.tiktok.com/@mos3aab_0" target="_blank" class="icon-link" title="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://discord.com/users/mosvvb" target="_blank" class="icon-link" title="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly?si=f577c216a58140aa" target="_blank" class="icon-link" title="Spotify">
+        <i class="fab fa-spotify"></i>
+      </a>
+    </div>
+
+    <div class="credit">Programmed by Me</div>
+  </div>
+
+  <audio id="myAudio" src="cas.mp3"></audio>
+
+  <script>
+    const audio = document.getElementById('myAudio');
+    const startOverlay = document.getElementById('startOverlay');
+    const mainContent = document.getElementById('mainContent');
+
+    startOverlay.addEventListener('click', () => {
+      startOverlay.style.display = 'none';
+      mainContent.style.display = 'flex';
+      audio.currentTime = 15;
+      audio.play();
+    });
+
+    document.body.addEventListener('click', () => {
+      if (audio.paused && startOverlay.style.display === 'none') {
+        audio.currentTime = 15;
+        audio.play();
+      }
+    });
+  </script>
+
+</body>
+</html>
