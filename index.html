@@ -142,7 +142,7 @@
     <div class="credit">Programmed by Me</div>
   </div>
 
-  <audio id="myAudio" src="c:\Users\benha\Downloads\swim.mp3"></audio>
+  <audio id="myAudio" src="cas.mp3"></audio>
 
   <script>
     const audio = document.getElementById('myAudio');
@@ -152,13 +152,13 @@
     startOverlay.addEventListener('click', () => {
       startOverlay.style.display = 'none';
       mainContent.style.display = 'flex';
-      audio.currentTime = 41;
+      audio.currentTime = 15;
       audio.play();
     });
 
     document.body.addEventListener('click', () => {
       if (audio.paused && startOverlay.style.display === 'none') {
-        audio.currentTime = 41;
+        audio.currentTime = 15;
         audio.play();
       }
     });
