@@ -152,13 +152,13 @@
     startOverlay.addEventListener('click', () => {
       startOverlay.style.display = 'none';
       mainContent.style.display = 'flex';
-      audio.currentTime = 15;
+      audio.currentTime = 40;
       audio.play();
     });
 
     document.body.addEventListener('click', () => {
       if (audio.paused && startOverlay.style.display === 'none') {
-        audio.currentTime = 15;
+        audio.currentTime = 40;
         audio.play();
       }
     });
