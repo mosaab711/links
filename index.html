@@ -9,20 +9,114 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
-    /* ... الكود ديال الستايل ديالك بلا تغيير ... */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("lilpeep.jpg") no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+      z-index: 1;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 25px 20px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 480px;
+      box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      position: relative;
+    }
+
+    img.profile {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+       border: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    .links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .icon-link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 70px;
+      border-radius: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      color: white;
+      font-size: 38px;
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
+
+    .icon-link:hover {
+      transform: scale(1.2);
+      background: rgba(255,255,255,0.4);
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+
+    #startOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #90caf9;
+      font-size: 26px;
+      cursor: pointer;
+      z-index: 9999;
+      text-align: center;
+      padding: 20px;
+      user-select: none;
+      font-weight: 600;
+    }
+
     .credit {
       font-size: 12px;
       color: #ccc;
       margin-top: 25px;
       opacity: 0.7;
       font-style: italic;
-    }
-
-    #viewCounter {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #ccc;
-      opacity: 0.9;
     }
   </style>
 </head>
@@ -52,7 +146,6 @@
     </div>
 
     <div class="credit">Programmed by Me</div>
-    <div id="viewCounter" class="credit">0 Views</div>
   </div>
 
   <audio id="myAudio" src="nuts.mp3"></audio>
@@ -61,22 +154,12 @@
     const audio = document.getElementById('myAudio');
     const startOverlay = document.getElementById('startOverlay');
     const mainContent = document.getElementById('mainContent');
-    const viewCounter = document.getElementById('viewCounter');
-
-    // Load views from localStorage or set to 0
-    let views = localStorage.getItem('pageViews') || 0;
-    viewCounter.textContent = `${views} Views`;
 
     startOverlay.addEventListener('click', () => {
       startOverlay.style.display = 'none';
       mainContent.style.display = 'flex';
       audio.currentTime = 7;
       audio.play();
-
-      // Increase and store views
-      views++;
-      localStorage.setItem('pageViews', views);
-      viewCounter.textContent = `${views} Views`;
     });
 
     document.body.addEventListener('click', () => {
