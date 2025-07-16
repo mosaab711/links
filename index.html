@@ -118,6 +118,13 @@
       opacity: 0.7;
       font-style: italic;
     }
+
+    .counter-box {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -148,7 +155,15 @@
     <div class="credit">Programmed by Me</div>
   </div>
 
+  <!-- Music -->
   <audio id="myAudio" src="nuts.mp3"></audio>
+
+  <!-- Visitor Counter -->
+  <div class="counter-box">
+    <a href='https://www.free-counters.org/'>Free-Counters.org</a>
+    <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=45a34cf6828263e212c167716d2cea2904082945'></script>
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1366069/t/3"></script>
+  </div>
 
   <script>
     const audio = document.getElementById('myAudio');
@@ -169,10 +184,6 @@
       }
     });
   </script>
-
-  <!-- 🧮 Visitor Counter -->
-   <a href='https://www.free-counters.org/'>Free-Counters.org</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=45a34cf6828263e212c167716d2cea2904082945'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1366069/t/3"></script>
 
 </body>
 </html>
