@@ -2,209 +2,52 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>مُصْعَب - Personal Page</title>
-
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  <title>عداد الزوار المحلي</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      width: 100vw;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #222;
       color: #eee;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background: url("lilpeep.jpg") no-repeat center center fixed;
-      background-size: cover;
-      overflow: hidden;
-      position: relative;
-      direction: rtl;
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
-      z-index: 1;
-    }
-
-    .container {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 25px 20px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      width: 100%;
-      max-width: 480px;
-      box-sizing: border-box;
-      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 2;
-      position: relative;
+      height: 100vh;
+      margin: 0;
     }
-
-    img.profile {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: 20px;
-      object-fit: cover;
-      box-shadow: 0 0 15px rgba(255,255,255,0.6);
-    }
-
     h1 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: #fff;
+      font-size: 36px;
+      margin-bottom: 10px;
     }
-
-    #viewCounter {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 20px;
-      color: #fff;
-      margin-bottom: 20px;
-      user-select: none;
-      justify-content: center;
-    }
-
-    #viewCounter i {
+    #viewCount {
+      font-size: 64px;
       color: #90caf9;
-      font-size: 24px;
-    }
-
-    .links {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .icon-link {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 60px;
-      height: 60px;
-      border-radius: 15px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-      color: white;
-      font-size: 28px;
-      background: rgba(255,255,255,0.2);
-      box-shadow: 0 0 8px rgba(255,255,255,0.3);
-    }
-
-    .icon-link:hover {
-      transform: scale(1.2);
-      background: rgba(255,255,255,0.4);
-      box-shadow: 0 0 15px rgba(255,255,255,0.6);
-    }
-
-    #startOverlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 10, 10, 0.95);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #90caf9;
-      font-size: 26px;
-      cursor: pointer;
-      z-index: 9999;
-      text-align: center;
-      padding: 20px;
       user-select: none;
-      font-weight: 600;
     }
-
-    .credit {
-      font-size: 12px;
-      color: #ccc;
-      margin-top: 25px;
-      opacity: 0.7;
-      font-style: italic;
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #bbb;
     }
   </style>
 </head>
 <body>
 
-  <!-- Start screen overlay -->
-  <div id="startOverlay">Click here to start music automatically</div>
-
-  <!-- Black transparent gradient overlay -->
-  <div class="overlay"></div>
-
-  <!-- Main content -->
-  <div class="container" id="mainContent">
-    <img src="profile.png" alt="مُصْعَب" class="profile" />
-    <h1>مُصْعَب</h1>
-
-    <!-- Visitor count -->
-    <div id="viewCounter">
-      <i class="fas fa-eye"></i>
-      <span id="viewCount">0</span>
-    </div>
-
-    <div class="links">
-      <a href="https://www.tiktok.com/@mos3aab_0" target="_blank" class="icon-link" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-      <a href="https://discord.com/users/mosvvb" target="_blank" class="icon-link" title="Discord">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly?si=f577c216a58140aa" target="_blank" class="icon-link" title="Spotify">
-        <i class="fab fa-spotify"></i>
-      </a>
-    </div>
-
-    <div class="credit">Programmed by Me</div>
-  </div>
-
-  <audio id="myAudio" src="nuts.mp3"></audio>
+  <h1>مرحبا بك في صفحتي</h1>
+  <div>عدد زياراتك لهذه الصفحة:</div>
+  <div id="viewCount">0</div>
+  <p>هذا العداد مخزن محلياً في متصفحك فقط.</p>
 
   <script>
-    const audio = document.getElementById('myAudio');
-    const startOverlay = document.getElementById('startOverlay');
-    const mainContent = document.getElementById('mainContent');
-    const viewCountSpan = document.getElementById('viewCount');
+    // نجيب العدد القديم أو 0 إذا لا يوجد
+    let count = localStorage.getItem('visitCount') || 0;
+    count = parseInt(count) + 1;
 
-    // Start screen click to play music and show content
-    startOverlay.addEventListener('click', () => {
-      startOverlay.style.display = 'none';
-      mainContent.style.display = 'flex';
-      audio.currentTime = 7;
-      audio.play();
-    });
+    // نخزن العدد الجديد
+    localStorage.setItem('visitCount', count);
 
-    // Play audio on body click if paused and start overlay hidden
-    document.body.addEventListener('click', () => {
-      if (audio.paused && startOverlay.style.display === 'none') {
-        audio.currentTime = 40;
-        audio.play();
-      }
-    });
-
-    // Update visitor count with CountAPI
-    fetch('https://api.countapi.xyz/update/mosaab711/mypage/?amount=1')
-      .then(response => response.json())
-      .then(data => {
-        viewCountSpan.textContent = data.value;
-      })
-      .catch(() => {
-        viewCountSpan.textContent = '—';
-      });
+    // نعرض العدد في الصفحة
+    document.getElementById('viewCount').textContent = count;
   </script>
 
 </body>
