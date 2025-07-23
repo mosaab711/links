@@ -1,103 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mosaab - Personal Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>ASAP Vibes</title>
+
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
     body, html {
+      margin: 0;
+      padding: 0;
       height: 100vh;
       width: 100vw;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: url("asap-vertical.jpg") no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
-      z-index: 1;
+      position: relative;
+      color: #fff;
     }
 
     #startOverlay {
-      position: fixed;
+      position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.9);
-      color: #90caf9;
-      font-size: 24px;
+      background: rgba(0, 0, 0, 0.85);
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 10;
+      font-size: 22px;
+      font-weight: bold;
+      color: #90caf9;
       cursor: pointer;
-      z-index: 999;
-      text-align: center;
-      padding: 20px;
       user-select: none;
     }
 
-    .container {
-      position: fixed;
+    .card {
+      position: absolute;
       bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
       width: 280px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
+      height: 280px;
+      background: rgba(0, 0, 0, 0.4);
       border-radius: 20px;
-      border: 1.2px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      padding: 15px;
-      display: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      display: flex;
       flex-direction: column;
       align-items: center;
-      z-index: 10;
+      padding: 20px;
+      text-align: center;
+      z-index: 2;
+      animation: fadeInUp 1s ease-in-out;
     }
 
-    img.profile {
-      width: 80px;
-      height: 80px;
+    .profile-img {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+      margin-bottom: 15px;
     }
 
-    h1 {
+    .name {
       font-size: 18px;
-      color: white;
-      margin-bottom: 10px;
+      font-weight: 600;
+      margin-bottom: 15px;
     }
 
-    .links {
+    .icons {
       display: flex;
-      gap: 12px;
+      gap: 15px;
       justify-content: center;
     }
 
     .modern-icon {
-      width: 44px;
-      height: 44px;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 22px;
       color: white;
       background: rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(6px);
       transition: all 0.3s ease;
       text-decoration: none;
@@ -111,53 +108,68 @@
 
     .credit {
       font-size: 12px;
-      color: #ccc;
-      margin-top: 10px;
+      margin-top: 15px;
       opacity: 0.8;
       font-style: italic;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="startOverlay">Click here to enjoy A$AP vibes 🎧</div>
+  <!-- Start Overlay -->
+  <div id="startOverlay">🎧 Click here to enjoy ASAP vibes</div>
 
-  <div class="overlay"></div>
-
-  <div class="container" id="mainContent">
-    <img src="profile.png" alt="Profile" class="profile">
-    <h1>مُصْعَب</h1>
-    <div class="links">
-      <a href="https://tiktok.com" target="_blank" class="modern-icon"><i class="fab fa-tiktok"></i></a>
-      <a href="https://discord.com" target="_blank" class="modern-icon"><i class="fab fa-discord"></i></a>
-      <a href="https://spotify.com" target="_blank" class="modern-icon"><i class="fab fa-spotify"></i></a>
+  <!-- Main Card -->
+  <div class="card" id="mainCard" style="display: none;">
+    <img src="profile.png" alt="Profile" class="profile-img" />
+    <div class="name">مُصْعَب</div>
+    <div class="icons">
+      <a href="https://www.tiktok.com/@mos3aab_0" class="modern-icon" target="_blank" title="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://discord.com/users/mosvvb" class="modern-icon" target="_blank" title="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly" class="modern-icon" target="_blank" title="Spotify">
+        <i class="fab fa-spotify"></i>
+      </a>
     </div>
-    <div class="credit">Coded by me</div>
+    <div class="credit">🎧 Coded by Mosaab</div>
   </div>
 
+  <!-- Music -->
   <audio id="myAudio" src="asap.mp3"></audio>
 
   <script>
-    const audio = document.getElementById('myAudio');
     const startOverlay = document.getElementById('startOverlay');
-    const mainContent = document.getElementById('mainContent');
+    const mainCard = document.getElementById('mainCard');
+    const audio = document.getElementById('myAudio');
 
     startOverlay.addEventListener('click', () => {
       startOverlay.style.display = 'none';
-      mainContent.style.display = 'flex';
-      audio.currentTime = 77; // 01:17
+      mainCard.style.display = 'flex';
+      audio.currentTime = 77; // 01:17 start
       audio.play();
     });
 
-    // Replay on click if paused
     document.body.addEventListener('click', () => {
       if (audio.paused && startOverlay.style.display === 'none') {
-        audio.currentTime = 77;
         audio.play();
       }
     });
 
-    // Stop music at 03:11 (191 seconds)
+    // Stop at 03:11 (191 seconds)
     audio.addEventListener('timeupdate', () => {
       if (audio.currentTime >= 191) {
         audio.pause();
