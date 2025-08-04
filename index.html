@@ -7,74 +7,94 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- External CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Video background -->
-  <video autoplay muted loop id="bgVideo" playsinline>
-    <source src="chill.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
+  <!-- فيديو الخلفية -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="batman1.mp4" type="video/mp4" />
   </video>
-
-  <!-- Start screen overlay -->
-  <div id="startOverlay">Click here to start music automatically</div>
-
-  <!-- Black transparent gradient overlay -->
   <div class="overlay"></div>
 
-  <!-- Main content -->
-  <div class="container" id="mainContent" style="display:flex;">
-    <img src="profile.png" alt="مُصْعَب" class="profile" />
+  <!-- شاشة البداية -->
+  <div id="startOverlay">Click here to start music automatically</div>
+
+  <!-- البطاقة -->
+  <div class="container" id="mainContent">
+    <div class="profile-glow">
+      <img src="profile.png" alt="مُصْعَب" class="profile" />
+    </div>
     <h1>مُصْعَب</h1>
 
     <div class="links">
-      <a href="https://www.tiktok.com/@mos3aab_0" target="_blank" class="icon-link" title="TikTok">
+      <a href="https://www.tiktok.com/@mos3aab_0" target="_blank" class="icon-link tiktok" title="TikTok">
         <i class="fab fa-tiktok"></i>
       </a>
-      <a href="https://discord.com/users/mos3aabbbb" target="_blank" class="icon-link" title="Discord">
+      <a href="https://discord.com/users/mosvvb" target="_blank" class="icon-link discord" title="Discord">
         <i class="fab fa-discord"></i>
       </a>
-      <a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly?si=f577c216a58140aa" target="_blank" class="icon-link" title="Spotify">
+      <a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly?si=f577c216a58140aa" target="_blank" class="icon-link spotify" title="Spotify">
         <i class="fab fa-spotify"></i>
       </a>
     </div>
 
+    <!-- تحكم الصوت -->
+  <div class="sound-control">
+  <i id="soundIcon" class="fas fa-volume-up"></i>
+  <input type="range" id="volumeSlider" min="0" max="100" value="70" />
+</div>
+
     <div class="credit">Programmed by Me</div>
   </div>
 
-  <audio id="myAudio" src="imgodod.mp3"></audio>
+  <!-- الصوت -->
+  <audio id="myAudio" src="theneighbourhood.mp3" loop></audio>
 
   <script>
     const audio = document.getElementById('myAudio');
     const startOverlay = document.getElementById('startOverlay');
     const mainContent = document.getElementById('mainContent');
-    const START_TIME = 27; // seconds (0:27)
-    const END_TIME = 273;  // seconds (4:33)
+    const soundIcon = document.getElementById('soundIcon');
+    const volumeSlider = document.getElementById('volumeSlider');
 
-    function playSection() {
-      audio.currentTime = START_TIME;
-      audio.play();
-    }
+    let isMuted = false;
 
     startOverlay.addEventListener('click', () => {
       startOverlay.style.display = 'none';
       mainContent.style.display = 'flex';
-      playSection();
+      audio.currentTime = 7;
+      audio.volume = 0.7;
+      audio.play();
     });
 
     document.body.addEventListener('click', () => {
       if (audio.paused && startOverlay.style.display === 'none') {
-        playSection();
+        audio.play();
       }
     });
 
-    // Stop audio at END_TIME
-    audio.addEventListener('timeupdate', () => {
-      if (audio.currentTime >= END_TIME) {
-        audio.pause();
-        audio.currentTime = START_TIME;
+    // التحكم في الصوت
+    volumeSlider.addEventListener('input', (e) => {
+      audio.volume = e.target.value / 100;
+      if (audio.volume === 0) {
+        soundIcon.classList.remove('fa-volume-up');
+        soundIcon.classList.add('fa-volume-mute');
+      } else {
+        soundIcon.classList.add('fa-volume-up');
+        soundIcon.classList.remove('fa-volume-mute');
+      }
+    });
+
+    soundIcon.addEventListener('click', () => {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      if (isMuted) {
+        soundIcon.classList.remove('fa-volume-up');
+        soundIcon.classList.add('fa-volume-mute');
+      } else {
+        soundIcon.classList.remove('fa-volume-mute');
+        soundIcon.classList.add('fa-volume-up');
       }
     });
   </script>
