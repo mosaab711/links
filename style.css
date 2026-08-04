@@ -1,198 +1,383 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body, html {
-  width: 100%;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  cursor: url('batman-cursor.png'), auto;
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+font-family:Segoe UI,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+cursor:url("batman-cursor.png"),auto;
 }
 
-/* خلفية فيديو */
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
+/* Background */
+
+#bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-/* Overlay */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: -1;
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(3px);
+z-index:-1;
 }
 
-/* البطاقة */
-.container {
-  width: 320px;
-  padding: 30px 20px;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: absolute;
-  bottom: 40px;
-  left: 30%;
-  transform: translateX(-30%);
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  animation: fadeInScale 1s ease forwards;
-  opacity: 0;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+/* Phone */
+
+.phone{
+
+width:min(92vw,390px);
+
+aspect-ratio:9/16;
+
+border-radius:38px;
+
+overflow:hidden;
+
+border:2px solid rgba(255,255,255,.08);
+
+background:rgba(0,0,0,.15);
+
+backdrop-filter:blur(15px);
+
+box-shadow:
+
+0 0 50px rgba(255,0,0,.35),
+
+0 0 150px rgba(0,0,0,.6);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
 }
 
-@keyframes fadeInScale {
-  0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
-  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+/* Card */
+
+.container{
+
+display:none;
+
+width:100%;
+
+height:100%;
+
+padding:35px 25px;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+animation:fade .8s ease forwards;
+
 }
 
-/* Glow profile */
-.profile-glow {
-  border-radius: 50%;
-  padding: 5px;
-  background: radial-gradient(circle, rgba(255,0,0,0.8), transparent);
-  animation: glowPulse 2s infinite alternate;
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:scale(.8);
+
 }
 
-@keyframes glowPulse {
-  from { box-shadow: 0 0 15px rgba(255,0,0,0.5); }
-  to { box-shadow: 0 0 30px rgba(255,0,0,0.9); }
+to{
+
+opacity:1;
+
+transform:scale(1);
+
 }
 
-img.profile {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  object-fit: cover;
 }
 
-h1 {
-  font-size: 22px;
-  margin: 15px 0 20px;
-  color: #fff;
-  letter-spacing: 1px;
+/* Profile */
+
+.profile-glow{
+
+padding:6px;
+
+border-radius:50%;
+
+background:radial-gradient(red,transparent);
+
+animation:glow 2s infinite alternate;
+
 }
 
-.links {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-  margin-bottom: 20px;
+@keyframes glow{
+
+from{
+
+box-shadow:0 0 15px red;
+
 }
 
-/* أيقونات */
-.icon-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 65px;
-  height: 65px;
-  border-radius: 15px;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-  font-size: 32px;
-  background: rgba(255,255,255,0.15);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  transition: all 0.4s ease;
+to{
+
+box-shadow:0 0 35px red;
+
 }
 
-.icon-link:hover {
-  transform: translateY(-5px) scale(1.15);
 }
 
-/* ألوان الأيقونات */
-.icon-link.spotify {
-  color: #1DB954;
-}
-.icon-link.discord {
-  color: #5865F2;
-}
-.icon-link.tiktok {
-  background: linear-gradient(135deg, #010101 30%, #69C9D0 60%, #EE1D52 90%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.profile{
+
+width:130px;
+
+height:130px;
+
+border-radius:50%;
+
+border:3px solid white;
+
+object-fit:cover;
+
 }
 
-/* التحكم في الصوت */
-.sound-control {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px 12px;
-  border-radius: 12px;
+h1{
+
+margin-top:20px;
+
+font-size:28px;
+
+letter-spacing:2px;
+
+color:white;
+
 }
 
-.sound-control i {
-  font-size: 20px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+.bio{
+
+margin-top:8px;
+
+color:#ccc;
+
+font-size:15px;
+
 }
 
-.sound-control i:hover {
-  transform: scale(1.2);
-  color: #ff3b3b;
+/* Links */
+
+.links{
+
+display:flex;
+
+gap:18px;
+
+margin-top:35px;
+
 }
 
-.sound-control input[type="range"] {
-  -webkit-appearance: none;
-  width: 120px;
-  height: 4px;
-  background: #444;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
+.icon-link{
+
+width:72px;
+
+height:72px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:18px;
+
+font-size:33px;
+
+text-decoration:none;
+
+color:white;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(10px);
+
+transition:.35s;
+
 }
 
-.sound-control input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  background: #ff3b3b;
-  border-radius: 50%;
-  cursor: pointer;
+.icon-link:hover{
+
+transform:translateY(-6px) scale(1.1);
+
+box-shadow:0 0 25px rgba(255,0,0,.5);
+
 }
 
-.credit {
-  font-size: 12px;
-  color: #ccc;
-  margin-top: 15px;
-  opacity: 0.7;
-  font-style: italic;
+.discord{
+
+color:#5865F2;
+
 }
 
-/* شاشة البداية */
-#startOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #90caf9;
-  font-size: 26px;
-  cursor: pointer;
-  z-index: 9999;
-  text-align: center;
-  padding: 20px;
-  user-select: none;
-  font-weight: 600;
+.spotify{
+
+color:#1DB954;
+
+}
+
+.tiktok{
+
+background:linear-gradient(135deg,#69C9D0,#EE1D52);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+/* Sound */
+
+.sound-control{
+
+margin-top:35px;
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+background:rgba(255,255,255,.08);
+
+padding:10px 15px;
+
+border-radius:15px;
+
+}
+
+.sound-control i{
+
+font-size:22px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.sound-control i:hover{
+
+color:red;
+
+transform:scale(1.15);
+
+}
+
+.sound-control input{
+
+width:170px;
+
+}
+
+input[type=range]{
+
+appearance:none;
+
+height:5px;
+
+background:#555;
+
+border-radius:20px;
+
+}
+
+input[type=range]::-webkit-slider-thumb{
+
+appearance:none;
+
+width:16px;
+
+height:16px;
+
+border-radius:50%;
+
+background:#ff2b2b;
+
+cursor:pointer;
+
+}
+
+/* Credit */
+
+.credit{
+
+margin-top:auto;
+
+font-size:13px;
+
+opacity:.7;
+
+color:#ddd;
+
+}
+
+/* Start Screen */
+
+#startOverlay{
+
+position:fixed;
+
+inset:0;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(0,0,0,.95);
+
+z-index:999;
+
+cursor:pointer;
+
+}
+
+.enter-box{
+
+text-align:center;
+
+animation:fade 1s infinite alternate;
+
+}
+
+.enter-box h1{
+
+font-size:58px;
+
+letter-spacing:8px;
+
+color:white;
+
+}
+
+.enter-box p{
+
+margin-top:15px;
+
+color:#999;
+
+font-size:18px;
+
 }
