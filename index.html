@@ -1,103 +1,170 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>مُصْعَب - Personal Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مُصْعَب</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
-  <!-- فيديو الخلفية -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="batman1.mp4" type="video/mp4" />
-  </video>
-  <div class="overlay"></div>
+<!-- Background Video -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="batman1.mp4" type="video/mp4">
+</video>
 
-  <!-- شاشة البداية -->
-  <div id="startOverlay">Click here to start music automatically</div>
+<div class="overlay"></div>
 
-  <!-- البطاقة -->
-  <div class="container" id="mainContent">
-    <div class="profile-glow">
-      <img src="profile.png" alt="مُصْعَب" class="profile" />
-    </div>
-    <h1>مُصْعَب</h1>
+<!-- Start Screen -->
+<div id="startOverlay">
 
-    <div class="links">
-      <a href="https://www.tiktok.com/@mos3aab_0" target="_blank" class="icon-link tiktok" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-      </a>
-      <a href="https://discord.com/users/mosvvb" target="_blank" class="icon-link discord" title="Discord">
-        <i class="fab fa-discord"></i>
-      </a>
-      <a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly?si=f577c216a58140aa" target="_blank" class="icon-link spotify" title="Spotify">
-        <i class="fab fa-spotify"></i>
-      </a>
+    <div class="enter-box">
+
+        <h1>ENTER</h1>
+
+        <p>Click Anywhere</p>
+
     </div>
 
-    <!-- تحكم الصوت -->
-  <div class="sound-control">
-  <i id="soundIcon" class="fas fa-volume-up"></i>
-  <input type="range" id="volumeSlider" min="0" max="100" value="70" />
 </div>
 
-    <div class="credit">Programmed by Me</div>
-  </div>
+<!-- Phone -->
+<div class="phone">
 
-  <!-- الصوت -->
-  <audio id="myAudio" src="theneighbourhood.mp3" loop></audio>
+<div class="container" id="mainContent">
 
-  <script>
-    const audio = document.getElementById('myAudio');
-    const startOverlay = document.getElementById('startOverlay');
-    const mainContent = document.getElementById('mainContent');
-    const soundIcon = document.getElementById('soundIcon');
-    const volumeSlider = document.getElementById('volumeSlider');
+<div class="profile-glow">
 
-    let isMuted = false;
+<img src="profile.png" class="profile">
 
-    startOverlay.addEventListener('click', () => {
-      startOverlay.style.display = 'none';
-      mainContent.style.display = 'flex';
-      audio.currentTime = 115;
-      audio.volume = 0.7;
-      audio.play();
-    });
+</div>
 
-    document.body.addEventListener('click', () => {
-      if (audio.paused && startOverlay.style.display === 'none') {
-        audio.play();
-      }
-    });
+<h1>مُصْعَب</h1>
 
-    // التحكم في الصوت
-    volumeSlider.addEventListener('input', (e) => {
-      audio.volume = e.target.value / 100;
-      if (audio.volume === 0) {
-        soundIcon.classList.remove('fa-volume-up');
-        soundIcon.classList.add('fa-volume-mute');
-      } else {
-        soundIcon.classList.add('fa-volume-up');
-        soundIcon.classList.remove('fa-volume-mute');
-      }
-    });
+<p class="bio">
+Batman • Berserk • Developer
+</p>
 
-    soundIcon.addEventListener('click', () => {
-      isMuted = !isMuted;
-      audio.muted = isMuted;
-      if (isMuted) {
-        soundIcon.classList.remove('fa-volume-up');
-        soundIcon.classList.add('fa-volume-mute');
-      } else {
-        soundIcon.classList.remove('fa-volume-mute');
-        soundIcon.classList.add('fa-volume-up');
-      }
-    });
-  </script>
+<div class="links">
+
+<a href="https://www.tiktok.com/@mos3aab_0"
+class="icon-link">
+
+<i class="fab fa-tiktok"></i>
+
+</a>
+
+<a href="https://discord.com/users/mosvvb"
+class="icon-link">
+
+<i class="fab fa-discord"></i>
+
+</a>
+
+<a href="https://open.spotify.com/user/31hyg2gqwtyb6j4nj25oyxjwyaly"
+class="icon-link">
+
+<i class="fab fa-spotify"></i>
+
+</a>
+
+</div>
+
+<div class="sound-control">
+
+<i id="soundIcon"
+class="fas fa-volume-up"></i>
+
+<input
+type="range"
+id="volumeSlider"
+min="0"
+max="100"
+value="70">
+
+</div>
+
+<div class="credit">
+
+Made with ❤️ by Mosaab
+
+</div>
+
+</div>
+
+</div>
+
+<audio
+id="myAudio"
+src="theneighbourhood.mp3"
+loop>
+</audio>
+
+<script>
+
+const audio=document.getElementById("myAudio");
+
+const startOverlay=document.getElementById("startOverlay");
+
+const mainContent=document.getElementById("mainContent");
+
+const soundIcon=document.getElementById("soundIcon");
+
+const volumeSlider=document.getElementById("volumeSlider");
+
+let muted=false;
+
+startOverlay.onclick=()=>{
+
+startOverlay.style.display="none";
+
+mainContent.style.display="flex";
+
+audio.currentTime=115;
+
+audio.volume=.7;
+
+audio.play();
+
+};
+
+document.body.onclick=()=>{
+
+if(audio.paused&&startOverlay.style.display=="none"){
+
+audio.play();
+
+}
+
+};
+
+volumeSlider.oninput=(e)=>{
+
+audio.volume=e.target.value/100;
+
+};
+
+soundIcon.onclick=()=>{
+
+muted=!muted;
+
+audio.muted=muted;
+
+soundIcon.className=
+muted
+?
+"fas fa-volume-mute"
+:
+"fas fa-volume-up";
+
+};
+
+</script>
 
 </body>
 </html>
